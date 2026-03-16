@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taskboard — Stay Organized</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Playfair Display (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─── App Shell ─────────────────────────────────────────────── -->
+  <div class="app" id="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__icon" aria-hidden="true">✦</span>
+        <h1 class="header__title">Taskboard</h1>
+      </div>
+
+      <!-- Dark / Light toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <span class="theme-toggle__sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle__moon" aria-hidden="true">☽</span>
+        <span class="theme-toggle__track"></span>
+      </button>
+    </header>
+
+    <!-- Date line -->
+    <p class="date-line" id="dateLine"></p>
+
+    <!-- ─── Add Task Form ──────────────────────────────────────── -->
+    <section class="add-section" aria-label="Add a new task">
+      <div class="input-group">
+        <input
+          type="text"
+          id="taskInput"
+          class="task-input"
+          placeholder="What needs to be done?"
+          maxlength="120"
+          aria-label="New task text"
+          autocomplete="off"
+        />
+        <button class="btn-add" id="addBtn" aria-label="Add task">
+          <span aria-hidden="true">+</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ─── Controls Bar ──────────────────────────────────────── -->
+    <div class="controls-bar">
+      <!-- Task counter -->
+      <p class="task-counter" id="taskCounter">0 tasks remaining</p>
+
+      <!-- Filter tabs -->
+      <nav class="filter-tabs" aria-label="Filter tasks" role="tablist">
+        <button class="filter-tab active" data-filter="all"       role="tab" aria-selected="true">All</button>
+        <button class="filter-tab"        data-filter="active"    role="tab" aria-selected="false">Active</button>
+        <button class="filter-tab"        data-filter="completed" role="tab" aria-selected="false">Completed</button>
+      </nav>
+
+      <!-- Clear completed -->
+      <button class="btn-clear" id="clearCompleted" title="Remove all completed tasks">Clear done</button>
+    </div>
+
+    <!-- ─── Task List ─────────────────────────────────────────── -->
+    <main>
+      <ul class="task-list" id="taskList" aria-label="Task list" role="list">
+        <!-- Tasks injected by JS -->
+      </ul>
+
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-state__icon" aria-hidden="true">◎</span>
+        <p class="empty-state__msg">Nothing here yet.<br/><em>Add a task above.</em></p>
+      </div>
+    </main>
+
+    <!-- Footer hint -->
+    <footer class="footer">
+      <span>Drag tasks to reorder</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Click checkbox to complete</span>
+    </footer>
+
+  </div><!-- /app -->
+
+  <script src="script.js"></script>
+</body>
+</html>
